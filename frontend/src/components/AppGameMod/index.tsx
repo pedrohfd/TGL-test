@@ -209,6 +209,7 @@ export const AppGameMod = () => {
         dispatch(CartActions.addItemToCart(game))
       })
       setCartGames([])
+
       setMessageToUser({
         title: 'Bet Realizada com Sucesso!',
         description: 'Veja seu histórico de apostas, acessando sua conta.',

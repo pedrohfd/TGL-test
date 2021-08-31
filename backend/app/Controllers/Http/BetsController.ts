@@ -49,17 +49,19 @@ export default class BetsController {
       color: color,
     })
 
-    await Mail.send(message => {
-      message
-        .to(user.email)
-        .from('pedrohenriquededeus@hotmail.com', 'Pedro | Luby')
-        .subject('Created new bet')
-        .htmlView('emails/new_bet', {
-          username: user.username,
-          date: bet.date,
-          price: totalPrice,
-        })
-    })
+    if (sendEmailIndex === length) {
+      await Mail.send(message => {
+        message
+          .to(user.email)
+          .from('pedrohenriquededeus@hotmail.com', 'Pedro | Luby')
+          .subject('Created new bet')
+          .htmlView('emails/new_bet', {
+            username: user.username,
+            date: bet.date,
+            price: totalPrice,
+          })
+      })
+    }
 
     return bet
   }

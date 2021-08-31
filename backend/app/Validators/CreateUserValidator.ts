@@ -1,5 +1,5 @@
-import { schema, rules } from "@ioc:Adonis/Core/Validator";
-import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class CreateUserValidator {
   constructor(protected ctx: HttpContextContract) {}
@@ -26,15 +26,15 @@ export default class CreateUserValidator {
   public schema = schema.create({
     username: schema.string({ trim: true }, [
       rules.required(),
-      rules.unique({ table: "users", column: "username" }),
+      rules.unique({ table: 'users', column: 'username' }),
     ]),
     email: schema.string({ trim: true }, [
       rules.required(),
       rules.email(),
-      rules.unique({ table: "users", column: "email" }),
+      rules.unique({ table: 'users', column: 'email' }),
     ]),
     password: schema.string({ trim: true }, [rules.required()]),
-  });
+  })
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`
@@ -49,5 +49,5 @@ export default class CreateUserValidator {
    */
   public messages = {
     // required: "The {{ field }} is required to create a new account",
-  };
+  }
 }
